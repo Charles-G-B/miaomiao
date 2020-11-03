@@ -80,7 +80,7 @@
                     }
                 }).catch((err) => {
                     if (this.axios.isCancel(err)) {
-                        console.log('Rquest canceled', err.message); //请求如果被取消，这里是返回取消的message
+                        console.log('Request canceled', err.message); //请求如果被取消，这里是返回取消的message
                     } else {
                         //handle error
                         console.log(err);

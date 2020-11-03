@@ -19,6 +19,8 @@
             </keep-alive>
         </div>
         <TabBar />
+        <!-- router加name区分上面的router -->
+        <router-view name="detail" />
         <!-- <MessageBox /> -->
     </div>
 </template>
@@ -40,7 +42,7 @@
             //延迟三秒出现弹窗
             setTimeout(() => {
                 //获取城市数据
-                this.axios.get('/api/getLocation').then(() => {
+                this.axios.get('/api/getLocation').then((res) => {
                     var msg = res.data.msg;
                     if (msg === 'ok') {
 

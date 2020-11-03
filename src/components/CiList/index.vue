@@ -126,7 +126,7 @@
             if (this.prevCityId === cityId) { return; }
             this.isLoading = true;
 
-            this.axios.get('/api/cinemaList?cityId='+ cityId).then(() => {
+            this.axios.get('/api/cinemaList?cityId='+ cityId).then((res) => {
                 var msg = res.data.msg;
                 if (mas === 'ok') {
                     this.cinemaList = res.data.data.cinema;
