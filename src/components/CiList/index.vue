@@ -1,108 +1,111 @@
 <template>
     <div class="cinema_body">
-        <ul>
-            <li>
-                <div>
-                    <span>大地影院(澳东世纪店)</span>
-                    <span class="q"><span class="price">22.9</span> 元起</span>
-                </div>
-                <div class="address">
-                    <span>金州区大连经济技术开发区澳东世纪3层</span>
-                    <span>1763.5km</span>
-                </div>
-                <div class="card">
-                    <div class="bl">改签</div>
-                    <div class="bl">退</div>
-                    <div class="or">小吃</div>
-                    <div class="or">折扣卡</div>
-                </div>
-            </li>
-            <!-- <li> -->
-            <!-- <div> -->
-            <!-- <span>大地影院(澳东世纪店)</span> -->
-            <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
-            <!-- </div> -->
-            <!-- <div class="address"> -->
-            <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
-            <!-- <span>1763.5km</span> -->
-            <!-- </div> -->
-            <!-- <div class="card"> -->
-            <!-- <div>小吃</div> -->
-            <!-- <div>折扣卡</div> -->
-            <!-- </div> -->
-            <!-- </li> -->
-            <!-- <li> -->
-            <!-- <div> -->
-            <!-- <span>大地影院(澳东世纪店)</span> -->
-            <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
-            <!-- </div> -->
-            <!-- <div class="address"> -->
-            <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
-            <!-- <span>1763.5km</span> -->
-            <!-- </div> -->
-            <!-- <div class="card"> -->
-            <!-- <div>小吃</div> -->
-            <!-- <div>折扣卡</div> -->
-            <!-- </div> -->
-            <!-- </li> -->
-            <!-- <li> -->
-            <!-- <div> -->
-            <!-- <span>大地影院(澳东世纪店)</span> -->
-            <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
-            <!-- </div> -->
-            <!-- <div class="address"> -->
-            <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
-            <!-- <span>1763.5km</span> -->
-            <!-- </div> -->
-            <!-- <div class="card"> -->
-            <!-- <div>小吃</div> -->
-            <!-- <div>折扣卡</div> -->
-            <!-- </div> -->
-            <!-- </li> -->
-            <!-- <li> -->
-            <!-- <div> -->
-            <!-- <span>大地影院(澳东世纪店)</span> -->
-            <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
-            <!-- </div> -->
-            <!-- <div class="address"> -->
-            <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
-            <!-- <span>1763.5km</span> -->
-            <!-- </div> -->
-            <!-- <div class="card"> -->
-            <!-- <div>小吃</div> -->
-            <!-- <div>折扣卡</div> -->
-            <!-- </div> -->
-            <!-- </li> -->
-            <!-- <li> -->
-            <!-- <div> -->
-            <!-- <span>大地影院(澳东世纪店)</span> -->
-            <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
-            <!-- </div> -->
-            <!-- <div class="address"> -->
-            <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
-            <!-- <span>1763.5km</span> -->
-            <!-- </div> -->
-            <!-- <div class="card"> -->
-            <!-- <div>小吃</div> -->
-            <!-- <div>折扣卡</div> -->
-            <!-- </div> -->
-            <!-- </li> -->
-            <!-- 改造后 -->
-            <li v-for="item in cinemaList" :key="item.id">
-                <div>
-                    <span>{{ item.nm }}</span>
-                    <span class="q"><span class="price">{{ item.sellPrice }}</span> 元起</span>
-                </div>
-                <div class="address">
-                    <span>{{ item.addr }}</span>
-                    <span>{{ item.distance }}</span>
-                </div>
-                <div class="card">
-                    <div v-for="(itemCard,key) in item.tag" v-if="num===1" :class="key | classCard" :key="key">
-                        {{ key | formatCard }}</div>
-                </div>
-            </li>
-        </ul>
+        <Loading v-if="isLoading" />
+        <Scroller v-else>
+            <ul>
+                <li>
+                    <div>
+                        <span>大地影院(澳东世纪店)</span>
+                        <span class="q"><span class="price">22.9</span> 元起</span>
+                    </div>
+                    <div class="address">
+                        <span>金州区大连经济技术开发区澳东世纪3层</span>
+                        <span>1763.5km</span>
+                    </div>
+                    <div class="card">
+                        <div class="bl">改签</div>
+                        <div class="bl">退</div>
+                        <div class="or">小吃</div>
+                        <div class="or">折扣卡</div>
+                    </div>
+                </li>
+                <!-- <li> -->
+                <!-- <div> -->
+                <!-- <span>大地影院(澳东世纪店)</span> -->
+                <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
+                <!-- </div> -->
+                <!-- <div class="address"> -->
+                <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
+                <!-- <span>1763.5km</span> -->
+                <!-- </div> -->
+                <!-- <div class="card"> -->
+                <!-- <div>小吃</div> -->
+                <!-- <div>折扣卡</div> -->
+                <!-- </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!-- <div> -->
+                <!-- <span>大地影院(澳东世纪店)</span> -->
+                <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
+                <!-- </div> -->
+                <!-- <div class="address"> -->
+                <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
+                <!-- <span>1763.5km</span> -->
+                <!-- </div> -->
+                <!-- <div class="card"> -->
+                <!-- <div>小吃</div> -->
+                <!-- <div>折扣卡</div> -->
+                <!-- </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!-- <div> -->
+                <!-- <span>大地影院(澳东世纪店)</span> -->
+                <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
+                <!-- </div> -->
+                <!-- <div class="address"> -->
+                <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
+                <!-- <span>1763.5km</span> -->
+                <!-- </div> -->
+                <!-- <div class="card"> -->
+                <!-- <div>小吃</div> -->
+                <!-- <div>折扣卡</div> -->
+                <!-- </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!-- <div> -->
+                <!-- <span>大地影院(澳东世纪店)</span> -->
+                <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
+                <!-- </div> -->
+                <!-- <div class="address"> -->
+                <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
+                <!-- <span>1763.5km</span> -->
+                <!-- </div> -->
+                <!-- <div class="card"> -->
+                <!-- <div>小吃</div> -->
+                <!-- <div>折扣卡</div> -->
+                <!-- </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!-- <div> -->
+                <!-- <span>大地影院(澳东世纪店)</span> -->
+                <!-- <span class="q"><span class="price">22.9</span> 元起</span> -->
+                <!-- </div> -->
+                <!-- <div class="address"> -->
+                <!-- <span>金州区大连经济技术开发区澳东世纪3层</span> -->
+                <!-- <span>1763.5km</span> -->
+                <!-- </div> -->
+                <!-- <div class="card"> -->
+                <!-- <div>小吃</div> -->
+                <!-- <div>折扣卡</div> -->
+                <!-- </div> -->
+                <!-- </li> -->
+                <!-- 改造后 -->
+                <li v-for="item in cinemaList" :key="item.id">
+                    <div>
+                        <span>{{ item.nm }}</span>
+                        <span class="q"><span class="price">{{ item.sellPrice }}</span> 元起</span>
+                    </div>
+                    <div class="address">
+                        <span>{{ item.addr }}</span>
+                        <span>{{ item.distance }}</span>
+                    </div>
+                    <div class="card">
+                        <div v-for="(itemCard,key) in item.tag" v-if="num===1" :class="key | classCard" :key="key">
+                            {{ key | formatCard }}</div>
+                    </div>
+                </li>
+            </ul>
+        </Scroller>
     </div>
 </template>
 
@@ -112,14 +115,23 @@
         name: 'CiList',
         data() {
             return {
-                cinemaList: []
+                cinemaList: [],
+                isLoading: true,
+                prevCityId : -1
             }
         },
-        mounted() {
-            this.axios.get('/api/cinemaList?cityId=10').then(() => {
+        activated() {
+            //实现城市数据联动
+            var cityId = this.$store.state.city.id
+            if (this.prevCityId === cityId) { return; }
+            this.isLoading = true;
+
+            this.axios.get('/api/cinemaList?cityId='+ cityId).then(() => {
                 var msg = res.data.msg;
                 if (mas === 'ok') {
                     this.cinemaList = res.data.data.cinema;
+                    this.isLoading = false;//数据加载完成后
+                    this.prevCityId = cityId;
                 }
             });
         },

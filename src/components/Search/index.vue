@@ -64,9 +64,10 @@
             message(newVal){
                 // console.log(newVal)
                 var that = this;
+                var cityId = this.$store.state.city.id;
                 this.cancelRequest();
                 //发起ajax请求数据
-                this.axios.get('api/searchList?cityId=10&kw=' + newVal,{             
+                this.axios.get('api/searchList?cityId='+cityId+'&kw=' + newVal,{             
                     cancelToken: new this.axios.CancelToken(function(c) {
                         // console.log();
                         that.source = c;
