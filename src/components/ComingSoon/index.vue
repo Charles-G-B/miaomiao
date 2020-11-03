@@ -101,9 +101,10 @@
                 <!-- </li> -->
                 <!-- 改造后 -->
                 <li v-for="item in comingList" :key="item.id">
-                    <div class="pic_show"><img :src="item.img | setWH('128.180')"></div>
+                    <div class="pic_show" @tap="handleToDetail(item.id)"><img :src="item.img | setWH('128.180')"></div>
                     <div class="info_list">
-                        <h2>{{ item.nm }}<img v-if="item.version" src="@/assets/maxs.png" alt=""></h2>
+                        <h2 @tap="handleToDetail(item.id)">{{ item.nm }}<img v-if="item.version" src="@/assets/maxs.png"
+                                alt=""></h2>
                         <p><span class="person">{{ item.wish }}</span> 人想看</p>
                         <p>主演: {{ item.star }}</p>
                         <p>{{ item.rt }}上映</p>
@@ -124,16 +125,16 @@
             return {
                 comingList: [],
                 isLoading: true,
-                prevCityId : -1
+                prevCityId: -1
             }
         },
         activated() {
-            console.log('xxxx','实现城市数据联动');
+            console.log('xxxx', '实现城市数据联动');
             var cityId = this.$store.state.city.id
-            if(this.prevCityId === cityId){ return; }//如果切换城市相等注解return
+            if (this.prevCityId === cityId) { return; }//如果切换城市相等注解return
             this.isLoading = true;
 
-            this.axios.get('/api/movieComingList?cityId='+ cityId).then((res) => {
+            this.axios.get('/api/movieComingList?cityId=' + cityId).then((res) => {
                 var msg = res.data.msg;
                 if (msg === 'ok') {
                     this.comingList = res.data.data.comingList;
@@ -141,6 +142,11 @@
                     this.prevCityId = cityId;
                 }
             })
+        },
+        methods: {
+            handleToDetail(movieId) {
+                this.$router.push('/movie/detail/2/' + movieId);
+            }
         }
     }
 </script>
