@@ -90,14 +90,6 @@
                         <ul class="clearfix">
                             <li v-for="item in hotList" :key="item.id" @tap="handleToCity(item.nm,item.id)">
                                 {{ item.nm }}</li>
-                            <li>上海</li>
-                            <li>北京</li>
-                            <li>上海</li>
-                            <li>北京</li>
-                            <li>上海</li>
-                            <li>北京</li>
-                            <li>上海</li>
-                            <li>北京</li>
                         </ul>
                     </div>
                     <div class="city_sort" ref="city_sort">
@@ -106,15 +98,6 @@
                             <ul>
                                 <li v-for="itemList in item.list" :key="itemList.id"
                                     @tap="handleToCity(itemList.nm,itemList.id)">{{ itemList.nm }}</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2>B</h2>
-                            <ul>
-                                <li>北京</li>
-                                <li>保定</li>
-                                <li>蚌埠</li>
-                                <li>包头</li>
                             </ul>
                         </div>
                     </div>
